@@ -1,7 +1,9 @@
 # todolist
 这是一个用vue构建的简单的todolist
 使用了本地储存方法localStorage使用户能在自己的电脑上储存自己的备忘录
+
 [demo]( https://websixsix.github.io/todolist/dist/)
+
 实现的功能：
 1.添加备忘录(输入标题后回车添加,如果内容为空则什么都不添加)
 
