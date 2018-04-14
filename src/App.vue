@@ -33,7 +33,7 @@
         </ul>
       </content>
       <footer>
-        <div id="todoCount">未完成数：{{ countFinished }}</div>
+        <div id="todoCount">未完成数：{{ countAble }}</div>
         <div class="all" v-on:click="allShow"
              v-bind:class="{ butkeep: allKeep}">全部</div>
         <div class="able" v-on:click="hideFinish"
@@ -72,6 +72,9 @@ export default {
         }
       }
       return j;
+    },
+    countAble: function () {
+      return this.countItem-this.countFinished;
     },
     arise:function () {
       if(this.countFinished != 0){
