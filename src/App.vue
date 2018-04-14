@@ -4,15 +4,16 @@
     <h1>Vue-备忘录</h1>
     <div id="todolist">
       <div class="textPut">
-        <button v-on:click="finishAll()">V</button>
+        <button class="btn1" v-on:click="finishAll()">V</button>
         <input type="text" placeholder="输入一个备忘录"
                v-model="newmsg"
                v-on:keyup.enter="newItem(newmsg)">
+        <button class="send" v-on:click="newItem(newmsg)">New</button>
       </div>
       <content>
         <ul class="list">
           <li v-for="(item,index) in items"
-              v-bind:key="index"
+              v-bind:key="item.id"
               v-bind:class="{ finished : item.isFinished}"
               v-show="item.show"
               v-on:mouseover="butDisplay(item)"
@@ -24,7 +25,7 @@
             <input type="text" class="editinp"
                    v-else
                    v-model="item.message"
-                   v-on:keydown.enter="editItem(item)" v-on:blur="editedItem(item)" v-focus>
+                   v-on:keydown.enter="editedItem(item)" v-on:blur="editedItem(item)" v-focus>
             <span class="deleList" v-on:click="deleteItem(item,index)" v-show="item.icon">删除</span>
             <span class="editList" v-on:click="editItem(item,index)" v-show="item.icon">编辑</span>
             <span class="compList" v-on:click="switchFinish(item)" v-show="item.icon">完成</span>
@@ -73,7 +74,7 @@ export default {
       return j;
     },
     arise:function () {
-      if(this.countFinished>=1){
+      if(this.countFinished != 0){
         return true;
       }else {
         return false;
@@ -88,13 +89,6 @@ export default {
       }else {
         document.getElementsByTagName('content')[0].style.display='block';
         document.getElementsByTagName('footer')[0].style.display='block';
-      }
-    },
-    countFinished:function (val) {
-      if( val>=1 ){
-        this.arise = true;
-      }else {
-        this.arise = false;
       }
     },
     items:{
@@ -179,6 +173,7 @@ export default {
       for (let i = 0; i < this.items.length; i++) {
         if (this.items[i].isFinished) {
           this.items.splice(this.items.indexOf(this.items[i]), 1);
+          i--;
         }
       }
     },
@@ -229,7 +224,7 @@ export default {
     width: 100%;
     font-size: 30px;
   }
-  .textPut button{
+  .textPut button.btn1{
     width: 36px;
     height: 46px;
     position: absolute;
@@ -241,10 +236,22 @@ export default {
     border-style: solid;
     border-width: 5px;
   }
+  .textPut button.send{
+    width: 50px;
+    height:46px;
+    position: absolute;
+    background: lightslategrey;
+    right:0;
+    top: 2px;
+    border-radius: 10px;
+    border-color: ghostwhite;
+    border-style: solid;
+    border-width: 5px;
+  }
   .textPut input{
-    width: 330px;
+    width: 285px;
     height: 40px;
-    padding: 5px 5px 5px 50px;
+    padding: 5px 50px 5px 50px;
     font-size: 30px;
     border: 0;
   }
@@ -261,6 +268,7 @@ export default {
     width: 300px;
     padding-right: 70px;
     position: relative;
+    padding-bottom: 5px;
     border-bottom:1px solid grey;
   }
   ul li label{
@@ -269,7 +277,7 @@ export default {
     word-break: break-all;
   }
   ul li .editinp{
-    border:0;
+    border:2px solid steelblue;
     font-size: 22px;
     width: 220px;
     padding: 0 30px 0 10px;
