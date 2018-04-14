@@ -132,7 +132,8 @@ export default {
       this.items.splice(index, 1);
     },
     editItem: function (item) {
-      item.flag = !item.flag
+      item.flag = !item.flag;
+      item.icon = false;
     },
     editedItem: function (item) {
       item.flag = true;
