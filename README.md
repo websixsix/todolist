@@ -1,6 +1,6 @@
 # todolist
-这是一个用vue构建的简单的todolist
-使用了本地储存方法localStorage使用户能在自己的电脑上储存自己的备忘录
+这是一个用vue构建的简单的todolist</br>
+使用了本地储存方法 localStorage 使用户能在自己的电脑上储存数据
 
 [demo]( https://websixsix.github.io/todolist/dist/)
 
