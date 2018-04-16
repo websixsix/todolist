@@ -339,18 +339,21 @@ export default {
   }
   .all{
     left:250px;
-    padding: 0 2px;
-    border: 1px solid white;
+    padding: 0 4px;
+    border: 2px solid white;
+    cursor: default;
   }
   .already{
     left:110px;
-    padding: 0 2px;
-    border: 1px solid white;
+    padding: 0 4px;
+    border: 2px solid white;
+    cursor: default;
   }
   .able{
-    padding: 0 2px;
+    padding: 0 4px;
     left:180px;
-    border: 1px solid white;
+    border: 2px solid white;
+    cursor: default;
   }
   a.clearfin:link,a.clearfin:visited,a.clearfin:active{
     right: 0;
